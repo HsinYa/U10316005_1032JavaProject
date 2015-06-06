@@ -80,6 +80,68 @@ public class QickGame extends JFrame implements ActionListener{
 		startTime = System.currentTimeMillis();
 	}
 	
+	@Override
+	 public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		//Judge the button and the word if it's the same color
+		 if(e.getSource() == BlackButton){  
+			 if(index == 7 || index == 8){
+				 right++;
+			 }else{
+				 error++;
+			 }
+			 total++;
+			 endTime = System.currentTimeMillis();
+		 }
+		 else if(e.getSource() == RedButton){
+			 if(index == 1 || index == 4 || index == 9){
+				 right++;
+			 }else{
+				 error++;
+			 }
+			 total++;
+			 endTime = System.currentTimeMillis();
+		 }
+		 else if(e.getSource() == BlueButton){
+			 if(index == 0 || index == 2 || index == 6){
+				 right++;
+			 }else{
+				 error++;
+			 }
+			 total++;
+			 endTime = System.currentTimeMillis();
+		 }
+		 else if(e.getSource() == GreenButton){
+			 if(index == 3 || index == 5 ){
+				 right++;
+			 }else{
+				 error++;
+			 }
+			 total++;
+			 endTime = System.currentTimeMillis();
+		 }
+		 //Calculate the time of executing the action
+		 totTime = (endTime - startTime)/1000;
+		 //In different conditions display the different result
+		 if(total==1){
+			 if( totTime < 1.5 && right == 1){
+				 JOptionPane.showMessageDialog(null, "答對了!!\n反應超迅速~~");
+				 System.exit(error);
+			 }
+			 else if( totTime > 1.5 && totTime < 3 && right == 1){
+				 JOptionPane.showMessageDialog(null, "答對了!!\n反應好阿~~");
+				 System.exit(error);
+			 }
+			 else if(totTime > 3 && right == 1){
+				 JOptionPane.showMessageDialog(null, "答對了!!\n反應可再加強~~");
+				 System.exit(error);
+			 }else if(error == 1){
+				 JOptionPane.showMessageDialog(null, "答錯了~~~\n要再看仔細一點，加油!!!", "訊息",JOptionPane.ERROR_MESSAGE); 
+				 System.exit(error);
+			 }
+		 } 
+	 }
+	 
 	public static void main(String[] args){
 		QickGame frame = new QickGame();
 		frame.setTitle("Qick Game");
