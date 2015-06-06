@@ -1,26 +1,83 @@
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class QickGame extends JFrame{
-	JPanel p2;
-	JButton RedButton = new JButton("Red");
-	JButton BlackButton = new JButton("Black");
-	JButton BlueButton = new JButton("Blue");
-	JButton WhiteButton = new JButton("White");
+public class QickGame extends JFrame implements ActionListener{
+	//Data fields
+	JPanel p1,p2,p3;
+	private JFrame resaultFrame = new JFrame();
+	JButton RedButton = new JButton("紅");
+	JButton BlackButton = new JButton("黑");
+	JButton BlueButton = new JButton("藍");
+	JButton GreenButton = new JButton("綠");
+	JLabel[] word = new JLabel[10];
+	int index=0,right=0,error=0,total=0;
+	JLabel title ;
+	private JFrame nextFrame = new JFrame();
+	long startTime=0,endTime=0,totTime=0;
+
 	
-	public QickGame(){
+	//Constructor
+	QickGame(){
+		p1 = new JPanel();
+		//Create some words of JLabel in different colors
+		Font font = new Font("標楷體", Font.BOLD, 230);
+		word[0] = new JLabel("紅");
+		word[0].setFont(font);
+		word[0].setForeground(Color.BLUE);
+		word[1] = new JLabel("綠");
+		word[1].setFont(font);
+		word[1].setForeground(Color.RED);
+		word[2] = new JLabel("黑");
+		word[2].setFont(font);
+		word[2].setForeground(Color.BLUE);
+		word[3] = new JLabel("藍");
+		word[3].setFont(font);
+		word[3].setForeground(Color.GREEN);
+		word[4] = new JLabel("藍");
+		word[4].setFont(font);
+		word[4].setForeground(Color.RED);
+		word[5] = new JLabel("黑");
+		word[5].setFont(font);
+		word[5].setForeground(Color.GREEN);
+		word[6] = new JLabel("紅");
+		word[6].setFont(font);
+		word[6].setForeground(Color.BLUE);
+		word[7] = new JLabel("綠");
+		word[7].setFont(font);
+		word[7].setForeground(Color.BLACK);
+		word[8] = new JLabel("藍");
+		word[8].setFont(font);
+		word[8].setForeground(Color.BLACK);
+		word[9] = new JLabel("黑");
+		word[9].setFont(font);
+		word[9].setForeground(Color.RED);
+		index = (int)(Math.random()*word.length);
+		p1.setLayout(new GridLayout(1,1));
+		p1.add(word[index]);
+		//Put four buttons in location
 		p2 = new JPanel();
 		p2.setLayout(new GridLayout(1,4,15,0));
 		p2.add(BlackButton);
+		BlackButton.addActionListener(this);
 		p2.add(RedButton);
+		RedButton.addActionListener(this);
 		p2.add(BlueButton);
-		p2.add(WhiteButton);
-		
-		add(p2,BorderLayout.SOUTH);
+		BlueButton.addActionListener(this);
+		p2.add(GreenButton);
+		GreenButton.addActionListener(this);
+		p3 = new JPanel();
+		Font font2 = new Font("標楷體", Font.BOLD, 20);
+		title = new JLabel("以最快的速度找出字的「顏色」!!!");
+		title.setFont(font2);
+		title.setForeground(Color.BLACK);
+		p3.add(title,BorderLayout.NORTH);
+		p3.add(p1,BorderLayout.CENTER);
+		p3.add(p2,BorderLayout.SOUTH);
+		add(p3);
+		startTime = System.currentTimeMillis();
 	}
 	
 	public static void main(String[] args){
