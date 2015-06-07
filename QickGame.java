@@ -7,7 +7,6 @@ import javax.swing.*;
 public class QickGame extends JFrame implements ActionListener{
 	//Data fields
 	JPanel p1,p2,p3;
-	private JFrame resaultFrame = new JFrame();
 	JButton RedButton = new JButton("紅");
 	JButton BlackButton = new JButton("黑");
 	JButton BlueButton = new JButton("藍");
