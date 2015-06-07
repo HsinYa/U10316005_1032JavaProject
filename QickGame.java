@@ -14,7 +14,6 @@ public class QickGame extends JFrame implements ActionListener{
 	JLabel[] word = new JLabel[10];
 	int index=0,right=0,error=0,total=0;
 	JLabel title ;
-	private JFrame nextFrame = new JFrame();
 	long startTime=0,endTime=0,totTime=0;
 
 	
